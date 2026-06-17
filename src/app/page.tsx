@@ -2,7 +2,7 @@ import { LeaderboardTable } from "@/components/Leaderboard";
 import { ViewTabs } from "@/components/ViewTabs";
 import { formatLastUpdated, getLeaderboard } from "@/lib/leaderboard";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 export default async function Home() {
   const { entries, lastUpdated } = await getLeaderboard();

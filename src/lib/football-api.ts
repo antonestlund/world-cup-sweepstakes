@@ -2,6 +2,9 @@ import type { OpenFootballData, OpenFootballMatch } from "./types";
 import { apiNameToCanonical } from "./teams";
 import { fetchWorldCup26Matches } from "./worldcup26-api";
 
+const REVALIDATE_SECONDS = 3600;
+const FETCH_TIMEOUT_MS = 5000;
+
 const OPEN_FOOTBALL_URL =
   "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json";
 
@@ -10,7 +13,8 @@ const LIVE_MIRROR_URL =
 
 async function fetchJsonMatches(url: string): Promise<OpenFootballMatch[]> {
   const response = await fetch(url, {
-    cache: "no-store",
+    next: { revalidate: REVALIDATE_SECONDS },
+    signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
   });
 
   if (!response.ok) {

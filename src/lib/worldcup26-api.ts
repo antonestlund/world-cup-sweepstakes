@@ -22,7 +22,8 @@ function parseDate(localDate: string): string {
 
 export async function fetchWorldCup26Matches(): Promise<OpenFootballMatch[]> {
   const response = await fetch("https://worldcup26.ir/get/games", {
-    cache: "no-store",
+    next: { revalidate: 3600 },
+    signal: AbortSignal.timeout(5000),
   });
 
   if (!response.ok) {
