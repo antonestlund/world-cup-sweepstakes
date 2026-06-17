@@ -1,0 +1,144 @@
+{
+  "participants": [
+    {
+      "name": "Grace",
+      "avatar": "/avatars/grace.jpg",
+      "teams": [
+        "Spain",
+        "Austria",
+        "Uzbekistan",
+        "Bosnia and Herzegovina"
+      ]
+    },
+    {
+      "name": "Gina",
+      "avatar": "/avatars/gina.jpg",
+      "teams": [
+        "Portugal",
+        "Norway",
+        "Scotland",
+        "Cape Verde"
+      ]
+    },
+    {
+      "name": "Mary Ann",
+      "avatar": "/avatars/mary-ann.jpg",
+      "teams": [
+        "Belgium",
+        "Switzerland",
+        "Jordan",
+        "Ghana"
+      ]
+    },
+    {
+      "name": "Liam",
+      "avatar": "/avatars/liam.jpg",
+      "teams": [
+        "France",
+        "Algeria",
+        "Iraq",
+        "Curaçao"
+      ]
+    },
+    {
+      "name": "Jeroen",
+      "avatar": "/avatars/jeroen.jpg",
+      "teams": [
+        "Germany",
+        "Australia",
+        "Ivory Coast",
+        "Haiti"
+      ]
+    },
+    {
+      "name": "Jade",
+      "avatar": "/avatars/jade.jpg",
+      "teams": [
+        "Brazil",
+        "South Korea",
+        "Czech Republic",
+        "New Zealand"
+      ]
+    },
+    {
+      "name": "Kayla",
+      "avatar": "/avatars/kayla.jpg",
+      "teams": [
+        "Morocco",
+        "Egypt",
+        "Sweden",
+        "Bosnia and Herzegovina"
+      ]
+    },
+    {
+      "name": "Ross",
+      "avatar": "/avatars/ross.jpg",
+      "teams": [
+        "Croatia",
+        "Turkey",
+        "Tunisia",
+        "Cape Verde"
+      ]
+    },
+    {
+      "name": "Rita",
+      "avatar": "/avatars/rita.jpg",
+      "teams": [
+        "Argentina",
+        "Japan",
+        "Panama",
+        "Ghana"
+      ]
+    },
+    {
+      "name": "Tom",
+      "avatar": "/avatars/tom.jpg",
+      "teams": [
+        "Colombia",
+        "Ecuador",
+        "Saudi Arabia",
+        "Curaçao"
+      ]
+    },
+    {
+      "name": "Angie",
+      "avatar": "/avatars/angie.jpg",
+      "teams": [
+        "England",
+        "Canada",
+        "South Africa",
+        "Haiti"
+      ]
+    },
+    {
+      "name": "Anton",
+      "avatar": "/avatars/anton.jpg",
+      "teams": [
+        "Mexico",
+        "United States",
+        "Qatar",
+        "New Zealand"
+      ]
+    },
+    {
+      "name": "Judith",
+      "avatar": "/avatars/judith.jpg",
+      "teams": [
+        "Senegal",
+        "Uruguay",
+        "DR Congo",
+        "Bosnia and Herzegovina"
+      ]
+    },
+    {
+      "name": "Nico",
+      "avatar": "/avatars/nico.jpg",
+      "teams": [
+        "Netherlands",
+        "Iran",
+        "Paraguay",
+        "Cape Verde"
+      ]
+    }
+  ]
+}

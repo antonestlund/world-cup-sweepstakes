@@ -1,0 +1,242 @@
+{
+  "Spain": {
+    "apiName": "Spain",
+    "iso": "es",
+    "fifaRank": 1
+  },
+  "Argentina": {
+    "apiName": "Argentina",
+    "iso": "ar",
+    "fifaRank": 2
+  },
+  "France": {
+    "apiName": "France",
+    "iso": "fr",
+    "fifaRank": 3
+  },
+  "England": {
+    "apiName": "England",
+    "iso": "gb-eng",
+    "fifaRank": 4
+  },
+  "Brazil": {
+    "apiName": "Brazil",
+    "iso": "br",
+    "fifaRank": 5
+  },
+  "Portugal": {
+    "apiName": "Portugal",
+    "iso": "pt",
+    "fifaRank": 6
+  },
+  "Netherlands": {
+    "apiName": "Netherlands",
+    "iso": "nl",
+    "fifaRank": 7
+  },
+  "Belgium": {
+    "apiName": "Belgium",
+    "iso": "be",
+    "fifaRank": 8
+  },
+  "Germany": {
+    "apiName": "Germany",
+    "iso": "de",
+    "fifaRank": 9
+  },
+  "Croatia": {
+    "apiName": "Croatia",
+    "iso": "hr",
+    "fifaRank": 10
+  },
+  "United States": {
+    "apiName": "USA",
+    "iso": "us",
+    "fifaRank": 11
+  },
+  "Morocco": {
+    "apiName": "Morocco",
+    "iso": "ma",
+    "fifaRank": 12
+  },
+  "Colombia": {
+    "apiName": "Colombia",
+    "iso": "co",
+    "fifaRank": 13
+  },
+  "Mexico": {
+    "apiName": "Mexico",
+    "iso": "mx",
+    "fifaRank": 14
+  },
+  "Uruguay": {
+    "apiName": "Uruguay",
+    "iso": "uy",
+    "fifaRank": 15
+  },
+  "Switzerland": {
+    "apiName": "Switzerland",
+    "iso": "ch",
+    "fifaRank": 16
+  },
+  "Japan": {
+    "apiName": "Japan",
+    "iso": "jp",
+    "fifaRank": 17
+  },
+  "Senegal": {
+    "apiName": "Senegal",
+    "iso": "sn",
+    "fifaRank": 18
+  },
+  "Iran": {
+    "apiName": "Iran",
+    "iso": "ir",
+    "fifaRank": 19
+  },
+  "South Korea": {
+    "apiName": "South Korea",
+    "iso": "kr",
+    "fifaRank": 20
+  },
+  "Ecuador": {
+    "apiName": "Ecuador",
+    "iso": "ec",
+    "fifaRank": 21
+  },
+  "Austria": {
+    "apiName": "Austria",
+    "iso": "at",
+    "fifaRank": 22
+  },
+  "Australia": {
+    "apiName": "Australia",
+    "iso": "au",
+    "fifaRank": 23
+  },
+  "Canada": {
+    "apiName": "Canada",
+    "iso": "ca",
+    "fifaRank": 24
+  },
+  "Norway": {
+    "apiName": "Norway",
+    "iso": "no",
+    "fifaRank": 25
+  },
+  "Panama": {
+    "apiName": "Panama",
+    "iso": "pa",
+    "fifaRank": 26
+  },
+  "Egypt": {
+    "apiName": "Egypt",
+    "iso": "eg",
+    "fifaRank": 27
+  },
+  "Algeria": {
+    "apiName": "Algeria",
+    "iso": "dz",
+    "fifaRank": 28
+  },
+  "Scotland": {
+    "apiName": "Scotland",
+    "iso": "gb-sct",
+    "fifaRank": 29
+  },
+  "Paraguay": {
+    "apiName": "Paraguay",
+    "iso": "py",
+    "fifaRank": 30
+  },
+  "Tunisia": {
+    "apiName": "Tunisia",
+    "iso": "tn",
+    "fifaRank": 31
+  },
+  "Ivory Coast": {
+    "apiName": "Ivory Coast",
+    "iso": "ci",
+    "fifaRank": 32
+  },
+  "Sweden": {
+    "apiName": "Sweden",
+    "iso": "se",
+    "fifaRank": 33
+  },
+  "Turkey": {
+    "apiName": "Turkey",
+    "iso": "tr",
+    "fifaRank": 34
+  },
+  "Czech Republic": {
+    "apiName": "Czech Republic",
+    "iso": "cz",
+    "fifaRank": 35
+  },
+  "Saudi Arabia": {
+    "apiName": "Saudi Arabia",
+    "iso": "sa",
+    "fifaRank": 36
+  },
+  "South Africa": {
+    "apiName": "South Africa",
+    "iso": "za",
+    "fifaRank": 37
+  },
+  "Qatar": {
+    "apiName": "Qatar",
+    "iso": "qa",
+    "fifaRank": 38
+  },
+  "DR Congo": {
+    "apiName": "DR Congo",
+    "iso": "cd",
+    "fifaRank": 39
+  },
+  "Jordan": {
+    "apiName": "Jordan",
+    "iso": "jo",
+    "fifaRank": 40
+  },
+  "Uzbekistan": {
+    "apiName": "Uzbekistan",
+    "iso": "uz",
+    "fifaRank": 41
+  },
+  "Iraq": {
+    "apiName": "Iraq",
+    "iso": "iq",
+    "fifaRank": 42
+  },
+  "New Zealand": {
+    "apiName": "New Zealand",
+    "iso": "nz",
+    "fifaRank": 43
+  },
+  "Cape Verde": {
+    "apiName": "Cape Verde",
+    "iso": "cv",
+    "fifaRank": 44
+  },
+  "Bosnia and Herzegovina": {
+    "apiName": "Bosnia & Herzegovina",
+    "iso": "ba",
+    "fifaRank": 45
+  },
+  "Haiti": {
+    "apiName": "Haiti",
+    "iso": "ht",
+    "fifaRank": 46
+  },
+  "Curaçao": {
+    "apiName": "Curaçao",
+    "iso": "cw",
+    "fifaRank": 47
+  },
+  "Ghana": {
+    "apiName": "Ghana",
+    "iso": "gh",
+    "fifaRank": 48
+  }
+}
