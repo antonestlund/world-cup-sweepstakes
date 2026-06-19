@@ -30,16 +30,22 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteName = "World Cup Sweepstake";
+const title = "World Cup 2026 Sweepstake — Live Leaderboard & Standings";
+const description =
+  "Track our FIFA World Cup 2026 sweepstake with a live leaderboard. See which countries are still in, who's leading, and how your friends' teams are performing.";
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "World Cup Sweepstake",
-  description: "Live leaderboard for our FIFA World Cup 2026 sweepstakes",
+  title,
+  description,
   icons: {
     icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
   },
   openGraph: {
-    title: "World Cup Sweepstake",
-    description: "Live leaderboard for our FIFA World Cup 2026 sweepstakes",
+    siteName,
+    title,
+    description,
     type: "website",
     url: siteUrl,
     images: [
@@ -53,8 +59,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "World Cup Sweepstake",
-    description: "Live leaderboard for our FIFA World Cup 2026 sweepstakes",
+    title,
+    description,
     images: ["/opengraph-image"],
   },
 };
