@@ -1,6 +1,10 @@
 import type { OpenFootballData, OpenFootballMatch } from "./types";
 import { apiNameToCanonical } from "./teams";
 import { fetchWorldCup26Matches } from "./worldcup26-api";
+import {
+  getMockTournamentData,
+  isMockTournamentEnabled,
+} from "./mock-tournament";
 
 const REVALIDATE_SECONDS = 3600;
 const FETCH_TIMEOUT_MS = 5000;
@@ -59,6 +63,10 @@ function mergeMatches(...sources: OpenFootballMatch[][]): OpenFootballMatch[] {
 export async function fetchTournamentData(): Promise<
   OpenFootballData & { finishedMatches: number }
 > {
+  if (isMockTournamentEnabled()) {
+    return getMockTournamentData();
+  }
+
   const results = await Promise.allSettled([
     fetchJsonMatches(OPEN_FOOTBALL_URL),
     fetchJsonMatches(LIVE_MIRROR_URL),

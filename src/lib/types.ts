@@ -99,6 +99,7 @@ export interface FriendLeaderboardEntry {
   hasRunnerUp: boolean;
   activeCount: number;
   bestRoundSort: number;
+  activePoints: number;
   totalPoints: number;
   totalWins: number;
   totalGoalDifference: number;

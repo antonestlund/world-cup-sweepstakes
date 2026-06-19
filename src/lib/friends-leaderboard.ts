@@ -34,7 +34,8 @@ export function buildFriendsLeaderboard(
       hasRunnerUp: teams.some((team) => team.isRunnerUp),
       activeCount: stillIn.length,
       bestRoundSort: Math.max(...teams.map((team) => team.roundSort), 0),
-      totalPoints: stillIn.reduce((sum, team) => sum + team.groupStats.points, 0),
+      activePoints: stillIn.reduce((sum, team) => sum + team.groupStats.points, 0),
+      totalPoints: teams.reduce((sum, team) => sum + team.groupStats.points, 0),
       totalWins: stillIn.reduce((sum, team) => sum + team.groupStats.won, 0),
       totalGoalDifference: stillIn.reduce(
         (sum, team) => sum + team.groupStats.goalDifference,
@@ -60,7 +61,10 @@ function compareFriends(
 
   if (a.activeCount !== b.activeCount) return b.activeCount - a.activeCount;
   if (a.bestRoundSort !== b.bestRoundSort) return b.bestRoundSort - a.bestRoundSort;
-  if (a.totalPoints !== b.totalPoints) return b.totalPoints - a.totalPoints;
+
+  const aPoints = a.activeCount > 0 ? a.activePoints : a.totalPoints;
+  const bPoints = b.activeCount > 0 ? b.activePoints : b.totalPoints;
+  if (aPoints !== bPoints) return bPoints - aPoints;
   if (a.totalWins !== b.totalWins) return b.totalWins - a.totalWins;
   if (a.totalGoalDifference !== b.totalGoalDifference) {
     return b.totalGoalDifference - a.totalGoalDifference;

@@ -62,8 +62,17 @@ function TeamFlags({ teams }: { teams: FriendTeamEntry[] }) {
 }
 
 function StatsSummary({ entry }: { entry: FriendLeaderboardEntry }) {
+  const allPoints = entry.teams.reduce(
+    (sum, team) => sum + team.groupStats.points,
+    0,
+  );
+
   if (entry.activeCount === 0) {
-    return <span className="text-zinc-400">All out</span>;
+    return (
+      <span className="tabular-nums text-zinc-500">
+        Eliminated - {allPoints} pts
+      </span>
+    );
   }
 
   const gd =
@@ -73,7 +82,7 @@ function StatsSummary({ entry }: { entry: FriendLeaderboardEntry }) {
 
   return (
     <span className="tabular-nums text-zinc-700">
-      {entry.totalPoints} pts · {entry.totalWins}W · GD {gd}
+      {allPoints} pts · {entry.totalWins}W · GD {gd}
     </span>
   );
 }
@@ -108,9 +117,19 @@ function TeamPerformance({ team }: { team: FriendTeamEntry }) {
 }
 
 function ExpandedTeams({ teams }: { teams: FriendTeamEntry[] }) {
+  const sortedTeams = [...teams].sort((a, b) => {
+    const aActive = !a.isEliminated || a.isRunnerUp;
+    const bActive = !b.isEliminated || b.isRunnerUp;
+
+    if (aActive !== bActive) return aActive ? -1 : 1;
+    if (a.roundSort !== b.roundSort) return b.roundSort - a.roundSort;
+
+    return 0;
+  });
+
   return (
     <div className="space-y-2 pt-1">
-      {teams.map((team) => {
+      {sortedTeams.map((team) => {
         const faded = team.isEliminated && !team.isRunnerUp;
 
         return (
