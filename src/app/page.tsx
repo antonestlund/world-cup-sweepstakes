@@ -1,11 +1,14 @@
+import { FriendsLeaderboardTable } from "@/components/FriendsLeaderboard";
 import { LeaderboardTable } from "@/components/Leaderboard";
 import { ViewTabs } from "@/components/ViewTabs";
+import { buildFriendsLeaderboard } from "@/lib/friends-leaderboard";
 import { formatLastUpdated, getLeaderboard } from "@/lib/leaderboard";
 
 export const revalidate = 3600;
 
 export default async function Home() {
   const { entries, lastUpdated } = await getLeaderboard();
+  const friends = buildFriendsLeaderboard(entries);
 
   const active = entries.filter(
     (entry) => !entry.isEliminated || entry.isRunnerUp,
@@ -46,9 +49,14 @@ export default async function Home() {
             </>
           }
           friends={
-            <p className="rounded-2xl border border-zinc-200 bg-white px-6 py-12 text-center text-sm text-zinc-500 shadow-sm">
-              Friends leaderboard coming soon.
-            </p>
+            <>
+              <FriendsLeaderboardTable entries={friends} />
+
+              <p className="mt-6 text-center text-xs text-emerald-200/50 sm:text-left">
+                Ranked by teams still in the tournament, then points, wins, and
+                goal difference from active picks.
+              </p>
+            </>
           }
         />
       </div>

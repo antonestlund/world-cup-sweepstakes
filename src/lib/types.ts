@@ -77,3 +77,30 @@ export interface LeaderboardData {
   tournamentName: string;
   finishedMatches: number;
 }
+
+export interface FriendTeamEntry {
+  team: string;
+  iso: string;
+  isEliminated: boolean;
+  isWinner: boolean;
+  isRunnerUp: boolean;
+  roundSort: number;
+  fifaRank: number;
+  statusShort: string;
+  statusLong: string;
+  groupStats: GroupStats;
+}
+
+export interface FriendLeaderboardEntry {
+  name: string;
+  avatar: string;
+  teams: FriendTeamEntry[];
+  hasWinner: boolean;
+  hasRunnerUp: boolean;
+  activeCount: number;
+  bestRoundSort: number;
+  totalPoints: number;
+  totalWins: number;
+  totalGoalDifference: number;
+  bestFifaRank: number;
+}
