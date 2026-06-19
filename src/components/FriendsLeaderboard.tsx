@@ -9,21 +9,23 @@ function TeamFlag({
   iso,
   team,
   faded,
+  compact = false,
 }: {
   iso: string;
   team: string;
   faded: boolean;
+  compact?: boolean;
 }) {
   return (
     <img
       src={`https://flagcdn.com/w40/${iso}.png`}
       alt={`${team} flag`}
       title={team}
-      width={28}
-      height={20}
-      className={`h-5 w-7 shrink-0 rounded-sm object-cover shadow-sm transition-opacity sm:h-6 sm:w-8 ${
-        faded ? "opacity-25" : "opacity-100"
-      }`}
+      width={compact ? 24 : 28}
+      height={compact ? 16 : 20}
+      className={`shrink-0 rounded-sm object-cover shadow-sm transition-opacity ${
+        compact ? "h-4 w-6" : "h-5 w-7 sm:h-6 sm:w-8"
+      } ${faded ? "opacity-25" : "opacity-100"}`}
       loading="lazy"
     />
   );
@@ -46,15 +48,24 @@ function ParticipantAvatar({
   );
 }
 
-function TeamFlags({ teams }: { teams: FriendTeamEntry[] }) {
+function TeamFlags({
+  teams,
+  compact = false,
+}: {
+  teams: FriendTeamEntry[];
+  compact?: boolean;
+}) {
   return (
-    <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+    <div
+      className={`flex items-center ${compact ? "flex-nowrap gap-1.5" : "flex-wrap gap-1.5 sm:gap-2"}`}
+    >
       {teams.map((team) => (
         <TeamFlag
           key={team.team}
           iso={team.iso}
           team={team.team}
           faded={team.isEliminated && !team.isRunnerUp}
+          compact={compact}
         />
       ))}
     </div>
@@ -82,7 +93,11 @@ function StatsSummary({ entry }: { entry: FriendLeaderboardEntry }) {
 
   return (
     <span className="tabular-nums text-zinc-700">
-      {allPoints} pts · {entry.totalWins}W · GD {gd}
+      <span className="block sm:inline">
+        {allPoints} pts · {entry.totalWins}W
+      </span>
+      <span className="mx-1 hidden sm:inline">·</span>
+      <span className="block sm:inline">GD {gd}</span>
     </span>
   );
 }
@@ -213,7 +228,7 @@ function FriendsRow({
               </div>
               <div className="sm:hidden">
                 <div className="mt-1.5">
-                  <TeamFlags teams={entry.teams} />
+                  <TeamFlags teams={entry.teams} compact />
                 </div>
               </div>
             </div>
