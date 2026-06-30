@@ -62,7 +62,11 @@ function normalizeTeam(name: string): string | null {
 }
 
 function isGroupMatch(match: OpenFootballMatch): boolean {
-  return match.round.startsWith(GROUP_MATCH_PREFIX) && Boolean(match.group);
+  return (
+    match.round.startsWith(GROUP_MATCH_PREFIX) &&
+    Boolean(match.group) &&
+    /^Group [A-L]$/.test(match.group!)
+  );
 }
 
 function computeGroupTables(
@@ -344,6 +348,26 @@ function roundAfterWinning(round: TournamentRound): TournamentRound {
   }
 }
 
+function getKnockoutWinnerAndLoser(
+  match: OpenFootballMatch,
+  team1: string,
+  team2: string,
+): [string, string] {
+  const [score1, score2] = match.score!.ft;
+
+  if (score1 !== score2) {
+    return score1 > score2 ? [team1, team2] : [team2, team1];
+  }
+
+  const penalties = match.score?.p;
+  if (penalties) {
+    const [p1, p2] = penalties;
+    return p1 > p2 ? [team1, team2] : [team2, team1];
+  }
+
+  return [team2, team1];
+}
+
 export function computeTeamStates(
   matches: OpenFootballMatch[],
 ): Map<string, TeamTournamentState> {
@@ -414,9 +438,7 @@ export function computeTeamStates(
     const team2 = normalizeTeam(match.team2);
     if (!team1 || !team2) continue;
 
-    const [score1, score2] = match.score.ft;
-    const winner = score1 > score2 ? team1 : team2;
-    const loser = score1 > score2 ? team2 : team1;
+    const [winner, loser] = getKnockoutWinnerAndLoser(match, team1, team2);
 
     if (round === "final") {
       const winnerStatuses = formatStatuses("winner", false);

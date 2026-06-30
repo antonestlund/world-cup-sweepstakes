@@ -1,5 +1,6 @@
 import { FriendsLeaderboardTable } from "@/components/FriendsLeaderboard";
 import { LeaderboardTable } from "@/components/Leaderboard";
+import { UpdateDataButton } from "@/components/UpdateDataButton";
 import { ViewTabs } from "@/components/ViewTabs";
 import { buildFriendsLeaderboard } from "@/lib/friends-leaderboard";
 import { formatLastUpdated, getLeaderboard } from "@/lib/leaderboard";
@@ -71,6 +72,7 @@ export default async function Home() {
             </>
           }
         />
+        <UpdateDataButton />
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ import {
 
 const REVALIDATE_SECONDS = 3600;
 const FETCH_TIMEOUT_MS = 5000;
+const TOURNAMENT_CACHE_TAG = "tournament-data";
 
 const OPEN_FOOTBALL_URL =
   "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json";
@@ -15,9 +16,18 @@ const OPEN_FOOTBALL_URL =
 const LIVE_MIRROR_URL =
   "https://raw.githubusercontent.com/upbound-web/worldcup-live.json/master/2026/worldcup.json";
 
+const KNOCKOUT_ROUNDS = new Set([
+  "Round of 32",
+  "Round of 16",
+  "Quarter-final",
+  "Semi-final",
+  "Match for third place",
+  "Final",
+]);
+
 async function fetchJsonMatches(url: string): Promise<OpenFootballMatch[]> {
   const response = await fetch(url, {
-    next: { revalidate: REVALIDATE_SECONDS },
+    next: { revalidate: REVALIDATE_SECONDS, tags: [TOURNAMENT_CACHE_TAG] },
     signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
   });
 
@@ -39,6 +49,29 @@ function matchKey(match: OpenFootballMatch): string | null {
   return `${match.date}|${teams[0]}|${teams[1]}`;
 }
 
+function isKnockoutRound(round: string): boolean {
+  return KNOCKOUT_ROUNDS.has(round);
+}
+
+function pickPreferredMatch(
+  existing: OpenFootballMatch,
+  incoming: OpenFootballMatch,
+): OpenFootballMatch {
+  const existingKnockout = isKnockoutRound(existing.round);
+  const incomingKnockout = isKnockoutRound(incoming.round);
+
+  if (existingKnockout && !incomingKnockout) return existing;
+  if (incomingKnockout && !existingKnockout) return incoming;
+
+  const existingHasPenalties = existing.score?.p !== undefined;
+  const incomingHasPenalties = incoming.score?.p !== undefined;
+
+  if (existingHasPenalties && !incomingHasPenalties) return existing;
+  if (incomingHasPenalties && !existingHasPenalties) return incoming;
+
+  return incoming;
+}
+
 function mergeMatches(...sources: OpenFootballMatch[][]): OpenFootballMatch[] {
   const merged = new Map<string, OpenFootballMatch>();
 
@@ -49,7 +82,8 @@ function mergeMatches(...sources: OpenFootballMatch[][]): OpenFootballMatch[] {
       const key = matchKey(match);
       if (!key) continue;
 
-      merged.set(key, match);
+      const existing = merged.get(key);
+      merged.set(key, existing ? pickPreferredMatch(existing, match) : match);
     }
   }
 
@@ -68,9 +102,9 @@ export async function fetchTournamentData(): Promise<
   }
 
   const results = await Promise.allSettled([
-    fetchJsonMatches(OPEN_FOOTBALL_URL),
-    fetchJsonMatches(LIVE_MIRROR_URL),
     fetchWorldCup26Matches(),
+    fetchJsonMatches(LIVE_MIRROR_URL),
+    fetchJsonMatches(OPEN_FOOTBALL_URL),
   ]);
 
   const matchSources = results

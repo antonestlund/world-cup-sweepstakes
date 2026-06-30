@@ -1,7 +1,6 @@
-import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
-import { fetchTournamentData } from "@/lib/football-api";
+import { refreshTournamentData } from "@/lib/refresh-tournament-data";
 
 export async function GET(request: Request) {
   const authHeader = request.headers.get("authorization");
@@ -12,8 +11,7 @@ export async function GET(request: Request) {
   }
 
   try {
-    await fetchTournamentData();
-    revalidatePath("/");
+    await refreshTournamentData();
 
     return NextResponse.json({
       ok: true,

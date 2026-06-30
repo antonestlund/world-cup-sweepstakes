@@ -63,6 +63,8 @@ export interface OpenFootballMatch {
   score?: {
     ft: [number, number];
     ht?: [number, number];
+    et?: [number, number];
+    p?: [number, number];
   };
 }
 
